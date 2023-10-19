@@ -7,6 +7,19 @@ namespace Penumbra.Api;
 
 public static partial class Ipc
 {
+    /// <inheritdoc cref="IPenumbraApi.GetSerializedResourceTrees"/>
+    public static class GetSerializedResourceTrees
+    {
+        public const string Label = $"Penumbra.{nameof(GetSerializedResourceTrees)}";
+
+        public static FuncProvider<ushort[], IReadOnlyList<(string, string)>> Provider(DalamudPluginInterface pi,
+                       Func<ushort[], IReadOnlyList<(string, string)>> func)
+            => new(pi, Label, func);
+
+        public static FuncSubscriber<ushort[], IReadOnlyList<(string, string)>> Subscriber(DalamudPluginInterface pi)
+            => new(pi, Label);
+    }
+
     /// <inheritdoc cref="IPenumbraApi.GetGameObjectResourcePaths"/>
     public static class GetGameObjectResourcePaths
     {
