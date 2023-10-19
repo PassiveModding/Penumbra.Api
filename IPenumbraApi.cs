@@ -535,10 +535,11 @@ public interface IPenumbraApi : IPenumbraApiBase
     /// <summary>
     /// Get the given game objects' resources, as serialized resource trees.
     /// </summary>
+    /// <param name="withUiData"> Whether to get names and icons along with the paths. </param>
     /// <param name="gameObjects"> The game object indicies for which to get the resources. </param>
     /// <returns> A list of of serialized resource trees, of the same length and in the same order as the given game object index array along with the name of the resource tree. </returns>
     /// <remarks> This function is best called right after the game objects are redrawn, as it may fail to resolve paths if relevant mod settings have changed since then. </remarks>
-    public IReadOnlyList<(string, string)> GetSerializedResourceTrees(params ushort[] gameObjects);
+    public IReadOnlyList<(string, string)> GetSerializedResourceTrees(bool withUiData, params ushort[] gameObjects);
 
     /// <summary>
     /// Get the given game objects' resources, as dictionaries of actual paths (that may be FS paths for redirected resources, or game paths for swapped or vanilla resources) to game paths.

@@ -12,11 +12,11 @@ public static partial class Ipc
     {
         public const string Label = $"Penumbra.{nameof(GetSerializedResourceTrees)}";
 
-        public static FuncProvider<ushort[], IReadOnlyList<(string, string)>> Provider(DalamudPluginInterface pi,
-                       Func<ushort[], IReadOnlyList<(string, string)>> func)
+        public static FuncProvider<bool, ushort[], IReadOnlyList<(string, string)>> Provider(DalamudPluginInterface pi,
+                       Func<bool, ushort[], IReadOnlyList<(string, string)>> func)
             => new(pi, Label, func);
 
-        public static FuncSubscriber<ushort[], IReadOnlyList<(string, string)>> Subscriber(DalamudPluginInterface pi)
+        public static FuncSubscriber<bool, ushort[], IReadOnlyList<(string, string)>> Subscriber(DalamudPluginInterface pi)
             => new(pi, Label);
     }
 
