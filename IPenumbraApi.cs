@@ -1,6 +1,7 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using Lumina.Data;
 using Penumbra.Api.Enums;
+using Penumbra.Api.Models;
 
 namespace Penumbra.Api;
 
@@ -531,6 +532,8 @@ public interface IPenumbraApi : IPenumbraApiBase
     #endregion
 
     #region Resource Tree
+
+    public IReadOnlyList<ResourceTreeDTO> GetResourceTrees();
 
     /// <summary>
     /// Get the given game objects' resources, as dictionaries of actual paths (that may be FS paths for redirected resources, or game paths for swapped or vanilla resources) to game paths.

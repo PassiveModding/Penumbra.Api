@@ -2,11 +2,24 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Penumbra.Api.Enums;
 using Penumbra.Api.Helpers;
+using Penumbra.Api.Models;
 
 namespace Penumbra.Api;
 
 public static partial class Ipc
 {
+    public static class GetResourceTrees
+    {
+        public const string Label = $"Penumbra.{nameof(GetResourceTrees)}";
+
+        public static FuncProvider<IReadOnlyList<ResourceTreeDTO>> Provider(DalamudPluginInterface pi,
+                       Func<IReadOnlyList<ResourceTreeDTO>> func)
+            => new(pi, Label, func);
+
+        public static FuncSubscriber<IReadOnlyList<ResourceTreeDTO>> Subscriber(DalamudPluginInterface pi)
+            => new(pi, Label);
+    }
+
     /// <inheritdoc cref="IPenumbraApi.GetGameObjectResourcePaths"/>
     public static class GetGameObjectResourcePaths
     {
